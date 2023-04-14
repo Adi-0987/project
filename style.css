@@ -1,0 +1,143 @@
+/* Set up overall page styles */
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+    background-color: #1a1a1a;
+}
+
+/* Set up header styles */
+header {
+	background-color: #1a1a1a4b;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+}
+
+label {
+  size: 34px;
+  margin-top: 20px;
+	color: white;
+}
+
+/* Style the logo */
+.logo img {
+	height: 50px;
+	width: 50px;
+    margin-top: 5mm;
+}
+
+/* Style the user menu */
+.user-menu a {
+	color: white;
+	margin-left: 20px;
+	text-decoration: none;
+    margin-top: 5mm;
+    }
+
+/* Style the search bar */
+.search-bar {
+	display: flex;
+	margin: 0px auto;
+	width: 50%;
+}
+
+.search-bar input[type="text"] {
+	flex-grow: 1;
+	font-size: 20px;
+	padding: 10px;
+  color: #ccc;
+}
+
+.search-bar button {
+	background-color: #1a1a1a;
+	border: none;
+	color: white;
+	font-size: 20px;
+	padding: 10px;
+}
+
+/* Style the search results */
+.search-results {
+  margin: 50px auto;
+  width: 80%; /* increase the width of the search results to 80% */
+  max-height: 200px; /* set a maximum height for the search results */
+  overflow: auto; /* add a scrollbar if necessary */
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #daf9ff;
+  color: #000000;
+}
+
+/* Hide the search results when no results are displayed */
+.hidden {
+  display: none;
+}
+
+  #voice-btn {
+    font-size: 24px;
+    color: #ccc;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #voice-btn:hover {
+    color: #eadada;
+  }
+/* Set up footer styles */
+footer {
+	background-color: #1a1a1a;
+	padding: 20px;
+	text-align: center;
+    color: white; /* add this line to set the font color to white */
+}
+
+/* Add animations */
+.logo img {
+	animation: spin 5s infinite linear;
+}
+
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+    animation-duration: 10.0s; /* change the animation duration to 10.0 seconds */
+  }
+  /* Style the scrolling line container */
+.scroll-line {
+    background-color: rgba(26, 26, 26, 0.5); /* set background color with 0% opacity */;
+    color: white;
+    height: 30px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 2;
+  }
+  
+  /* Style the scrolling text */
+  .scroll-line p {
+    display: inline-block;
+    font-size: 20px;
+    margin: 0;
+    padding: 5px 10px;
+    white-space: nowrap;
+    animation: scroll 10s linear infinite;
+  }
+  
+  /* Create the scrolling animation */
+  @keyframes scroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  

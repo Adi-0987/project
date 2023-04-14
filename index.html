@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Search Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="My Search Engine Logo">
+        </div>
+        <div class="scroll-line">
+            <p>Welcome to PharmIT Search</p>
+        </div>        
+        <div class="user-menu">
+            <a href="#">Sign In</a>
+            <a href="#">Sign Up</a>
+        </div>
+    </header>
+    <main>
+        <form class="search-bar">
+            <label for="query">Ask a question:</label>
+            <input type="text" id="query" name="query" placeholder="query" required>
+            <button type="submit">Go</button>
+            <button type="button" id="voice-btn"><i class="fas fa-microphone"><img src="{{ url_for('static', filename='mic.png') }}" alt="Voice btn"></i></button>
+        </form>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+        <div class="search-results">
+            <table>
+              <thead>
+                <tr>
+                  <th>Column 1</th>
+                  <th>Column 2</th>
+                  <th>Column 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Rows will be dynamically added here -->
+              </tbody>
+            </table>
+          </div>
+          
+    </main>
+    <script>
+        // Listen for form submission
+        document.querySelector(".search-bar").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission behavior
+            var query = document.querySelector("#query").value; // Get user input
+            // Send POST request to server with user input
+            fetch("/chat", {
+                method: "POST",
+                body: new FormData(document.querySelector(".search-bar"))
+            })
+            .then(response => response.json()) // Parse response as JSON
+            .then(result => {
+                // Display database result on page
+                var responseDiv = document.querySelector(".search-results");
+                responseDiv.innerHTML = "";
+                for (var i = 0; i < result.length; i++) {
+                    var row = result[i];
+                    var rowDiv = document.createElement("div");
+                    rowDiv.textContent = row.join(" ");
+                    responseDiv.appendChild(rowDiv);
+                }
+            })
+            .catch(error => console.error(error));
+        });
+    </script>
+</body>
+</html>
